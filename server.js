@@ -10,18 +10,10 @@ const port = 3001;
 const connectDB = require('./DB');
 connectDB();
 
-app.get("/CreatePetshelterform", async (req, res) => {
-	console.log("=================");
-	console.log("/CreatePetshelterform");
-
-	try {
-		console.log("data sent");
-		res.send(data);
-	} catch (error) {
-		console.log(error);
-		res.status(500).send({ error: "error, see server logs" });
-	}
-});
+app.get("/", (req, res) => {
+  console.log("Message recieved");
+  res.send("You sent a get req");
+})
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
