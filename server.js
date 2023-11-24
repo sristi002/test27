@@ -3,16 +3,15 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-// Your middleware function controlshelterform
-const controlshelterform = require('./path/to/controlshelterform');
-
 app.use(cors()); // Enable CORS
 const port = 3001;
 
 const connectDB = require('./DB');
 connectDB();
 
-// Use bodyParser middleware
+// Your middleware function CreatePetshelterform
+const CreatePetshelterform = require('./path/to/CreatePetshelterform');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -20,11 +19,11 @@ app.use(express.json());
 app.use('/api', require("./Routes/CreateUser"));
 app.use('/api', require('./Routes/CreateRehome')); // Use CreateRehome.js route
 
-// Use controlshelterform middleware specifically for CreatePetshelterform route
-app.get("/CreatePetshelterform", controlshelterform, (req, res) => {
+// Apply CreatePetshelterform middleware specifically for CreatePetshelterform route
+app.get("/CreatePetshelterform", CreatePetshelterform, (req, res) => {
   console.log("Message received");
   
-  // Assuming controlshelterform has processed data and attached it to req.shelterFormData
+  // Assuming CreatePetshelterform has processed data and attached it to req.shelterFormData
   const shelterFormData = req.shelterFormData; // Modify this based on how your middleware attaches data
   
   // Send a response using the processed data
