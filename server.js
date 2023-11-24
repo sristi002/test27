@@ -10,7 +10,7 @@ const port = 3001;
 const connectDB = require('./DB');
 connectDB();
 
-app.get("/", (req, res) => {
+app.get("/CreatePetshelterform", (req, res) => {
   console.log("Message recieved");
   res.send("You sent a get req");
 })
